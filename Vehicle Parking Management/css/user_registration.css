@@ -1,0 +1,83 @@
+/* Form container */
+body{
+    background-image: url("images/bg4.jpg");
+    font-family: Arial, sans-serif;
+    background-size: cover;
+    background-position: center;
+    justify-content: center;
+    align-items: center
+
+}
+
+.container {
+    width: 500px;
+    margin: 150px auto;
+    padding: 30px;
+    background-color: rgba(187, 200, 199, 0.919);
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    
+    
+
+}
+
+
+/* Form title */
+h2 {
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+/* Form element styles */
+.form-group {
+    margin-bottom: 15px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    margin-left: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    flex: 1;
+}
+
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.alert-danger {
+    background-color: #ff4d4d;
+    color: #fff;
+}
+
+.error {
+    margin-bottom: 5px;
+}
+
+/* Other form styles */
+.btn {
+    display: flex;
+    width: 30%;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-primary {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #45a049;
+}
