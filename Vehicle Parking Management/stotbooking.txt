@@ -1,0 +1,104 @@
+<?php
+$status=1;
+
+if($status=0){?>
+
+    <div class="card bg-light mb-2" style="width: 5.5rem;">
+        <div class="card-header"><small> SLOT 1</small></div>
+    </div>
+
+    <?php
+}
+else if ($status=1){
+?>
+    <div class="card bg-danger mb-2" style="width: 5.5rem;">
+        <div class="card-header"><small> SLOT 2</small></div>
+    </div>
+    <?php
+}
+?>
+
+
+
+<div class="container">
+        <hr>
+        <div class="row">
+            <?php
+            //case-1
+for($i=1;$i<=12;$i++){?>
+
+
+            <div class="col-sm-1">
+                <div class="card bg-light mb-2" style="width: 5.5rem;">
+                    <div class="card-header"><small> SLOT <?php echo $i;?></small></div>
+                </div>
+            </div>
+            <?php
+};
+?>
+
+            <?php
+            //case-2
+for($i=13;$i<=24;$i++){?>
+            <div class="col-sm-1">
+                <div class="card bg-light mb-2" style="width: 5.5rem;">
+                    <div class="card-header"><small> SLOT <?php echo $i;?></small></div>
+                </div>
+            </div>
+            <?php
+};
+?>
+            <?php
+//case-3
+for($i=25;$i<=36;$i++){?>
+            <div class="col-sm-1">
+                <div class="card bg-light mb-2" style="width: 5.5rem;">
+                    <div class="card-header"><small> SLOT <?php echo $i;?></small></div>
+                </div>
+            </div>
+            <?php
+};
+?>
+            <?php
+//case-4
+for($i=37;$i<=48;$i++){?>
+            <div class="col-sm-1">
+                <div class="card bg-light mb-2" style="width: 5.5rem;">
+                    <div class="card-header"><small> SLOT <?php echo $i;?></small></div>
+                </div>
+            </div>
+            <?php
+};
+?>
+
+            <?php
+//case-5
+for($i=49;$i<=60;$i++){?>
+            <div class="col-sm-1">
+                <div class="card bg-light mb-2" style="width: 5.5rem;">
+                    <div class="card-header"><small> SLOT <?php echo $i;?></small></div>
+                </div>
+            </div>
+            <?php
+};
+?>
+
+        </div>
+        <hr>
+    </div>
+
+
+
+
+
+    alert function
+
+    <script type="text/javascript">
+function AlertIt() {
+var answer = confirm ("Please click on OK to continue.")
+if (answer)
+window.location="http://www.continue.com";
+}
+</script>
+
+<a href="javascript:AlertIt();">click me</a>

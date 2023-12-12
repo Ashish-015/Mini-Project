@@ -1,0 +1,26 @@
+//echo $user_id;
+//exit;
+$sql_user="SELECT * FROM users WHERE user_id=$user_id";
+//echo $sql_user;
+//exit;
+$result_user=mysqli_query($conn,$sql_user);
+
+if($data_user=mysqli_num_rows($result_user) == 1){
+    $user_name=$data_user['user_name'];
+    $user_vehicleno=$data_user['user_vehicleno'];
+    echo $user_name; exit;}
+if(isset($_POST['submit'])){
+
+    if($data_user=mysqli_num_rows($result_user) == 1){
+    $user_name=$data_user['user_name'];
+    $user_vehicleno=$data_user['user_vehicleno'];
+    echo $user_name; exit;
+}
+$slot_time=$_POST['slot_time'];
+$slot_date=$_POST['slot_date'];
+
+$sql="INSERT INTO `parking_details`(`vehicle_no`, `user_name`, `slot_date`, `slot_time`) VALUES ('$user_vehicleno','$user_name','$slot_date','$slot_time')";
+
+$result=mysqli_query($conn,$sql);
+
+}

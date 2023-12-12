@@ -1,0 +1,109 @@
+<?php
+//SESSION
+session_start();
+if(!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])){
+	header("location:user_login.php");
+}
+include('include/connect.php'); //CONNECTION
+
+$user_id=$_GET['user_id'];
+$sql_user="SELECT * FROM users";
+$result_user=mysqli_query($conn,$sql_user);
+//echo $sql_user;exit;
+$row_user=mysqli_fetch_assoc($result_user);
+//echo $row_user['user_name'];
+$user_name=$row_user['user_name'];
+$user_vehicleno=$row_user['user_vehicleno'];
+//echo $user_vehicleno;exit;
+
+
+if(isset($_POST['submit'])){
+    $slot_date=$_POST['slot_date'];
+    $slot_time=$_POST['slot_time'];
+    //echo $slot_date;
+    $sql="INSERT INTO `parking_details`(`user_vehicleno`, `user_name`, `slot_date`, `slot_time`) VALUES ('$user_vehicleno','$user_name','$slot_date','$slot_time')";
+    //echo $sql;exit;
+    $result=mysqli_query($conn,$sql);
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <style>
+    .card {
+        border-radius: 0;
+    }
+
+    .container {
+        padding-top: 20px;
+    }
+
+
+    body {
+        background-image: url('images/wall.jpg');
+        position: auto;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    </style>
+</head>
+
+<body>
+    <?php include('header_user.php'); ?>
+    <div class="container">
+        <h3>Select slot</h3>
+        <hr>
+        <div class="row">
+            <?php
+            $sql_slot="SELECT * FROM slot_master";
+            $result_slot=mysqli_query($conn,$sql_slot);
+            while($data=mysqli_fetch_array($result_slot)){?>
+            <div class=col-lg-1>
+                <?php 
+                if($data['slot_status']==0){ ?>
+                <div class="card bg-light mb-2" style="width: 100px; length:100px">
+                    <div class="card-header">
+                        <a
+                            href="source/confirm_slot.php?slot_id=<?php echo $data['slot_id'];?>&&user_id=<?php echo $user_id;?>">
+                            <small> SLOT
+                                <b><?php echo $data['slot_id'];?></b></small>
+                        </a>
+                    </div>
+                </div>
+                <?php } 
+                else if($data['slot_status']==1){ ?>
+                <div class="card bg-danger mb-2" style="width: 100px; length:100px">
+                    <div class="card-header">
+                        <small> SLOT
+                            <b><?php echo $data['slot_id'];?></b></small>
+                    </div>
+                </div>
+                <?php  } ?>
+            </div>
+            <?php
+}
+?>
+            <div class="row">
+                <div class="col-lg-1"></div>
+                <p>
+                    <small>
+                        <img src="images/icon/red_block.png" height="20px" width="20px" style="border:1px solid;">
+                        slot already booked<br>
+                        <img src=" images/icon/white_block.png" height="20px" width="20px" style="border:1px solid;">
+                        slot available
+                    </small>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
